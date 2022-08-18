@@ -1,5 +1,17 @@
-import {greet} from './greet'
-greet()
-console.log("Hello Abhishek!")
-console.log("How Are You?")
-console.log("I hobe you are good.")
+import express from 'express'
+import cors from 'cors'
+import dotenv from 'dotenv'
+
+const app = express()
+app.use(express.json()) // body parser middleware
+const PORT = process.env.PORT || 8080
+dotenv.config('../.env')//it loads the .env file into the process (environment variables)
+
+app.get('/',(req,res)=>{
+    res.send('Hello World!')
+})
+
+app.listen(PORT,()=>{
+    console.log('Server is running on port '+ PORT)
+})
+
