@@ -14,13 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Use node
-      - uses: actions/setup@v3
+        uses: actions/setup@v3
         with: 
           node-version: 16
       - run: npm install
       - run: npm run build
       - name: Deploy to heroku
-      - uses: akhileshns/heroku-deploy@v3.12.12
+        uses: akhileshns/heroku-deploy@v3.12.12
         with:
            heroku_api_key: 'cb1dce94-915c-49a2-b50e-34432a29fbaa'
            heroku_app_name: 'fswd-t-shirt-backend'
