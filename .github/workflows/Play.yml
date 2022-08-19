@@ -13,5 +13,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Playing with workflows
-        run: echo "running with github workflows"
+        run: echo "hi from github workflow"
 
