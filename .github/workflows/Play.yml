@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - master
-      paths:
-        - "src/*"
-        - ".github/workflows/Play.yml"
+    paths:
+      - "src/*"
+      - ".github/workflows/Play.yml"
 
 jobs:
   play:
