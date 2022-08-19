@@ -10,6 +10,9 @@ dotenv.config('../.env')//it loads the .env file into the process (environment v
 app.get('/',(req,res)=>{
     res.send('Hello Abhishek!')
 })
+app.get('/auth',(req,res)=>{
+    res.send('Hello I Am Backend!')
+})
 
 app.listen(PORT,()=>{
     console.log('Server is running on port '+ PORT)
