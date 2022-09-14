@@ -17,20 +17,16 @@ const ProductSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
-    color:{
-        type:String,
-        required:true
-    },
     size:{
-        type:String,
+        type:Number,
         required:true,
-        enum:['S','M','L','XL','XXL','XXXL']
+        enum:[34,36,38,40,42]
     },
-    image:{
+    imageUrl:{
         type:String,
         required:true
     },
-    stickerPrice:{
+    discount:{
         type:Number,
         required:true
     },
@@ -38,6 +34,13 @@ const ProductSchema = new mongoose.Schema({
         type:Number,
         required:true
     }
+})
+
+ProductSchema.pre('save', function(next){
+    const {price,discount} = this
+    let actualPriceAfterDiscount = price * (1-(discount/100))
+    this.price = parseInt(actualPriceAfterDiscount)
+    next()
 })
 
 ProductSchema.statics = {
@@ -48,4 +51,4 @@ ProductSchema.statics = {
     }
 }
 
-export const Prodcut = mongoose.model('Prodcut',ProductSchema);
+export const Product = mongoose.model('Prodcut',ProductSchema);

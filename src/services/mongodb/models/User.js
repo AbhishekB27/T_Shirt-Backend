@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { hashPassword } from '../../../helper/util';
 const UserSchema = new mongoose.Schema({
     email:{
         type:String,
@@ -27,6 +28,12 @@ const UserSchema = new mongoose.Schema({
             ref:'Address'
         }
     ]
+})
+
+UserSchema.pre('save', function(next){
+    const {passsword} = this
+    this.password = hashPassword(passsword)
+    next()
 })
 
 UserSchema.statics = {
